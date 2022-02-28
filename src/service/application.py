@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask_wtf.csrf import CSRFProtect
 from waitress import serve
 import logging
 from datetime import datetime
@@ -12,6 +13,8 @@ logging.basicConfig(
     filename=f"application_{datetime.now()}.log")
 
 app = Flask(__name__)
+csrf = CSRFProtect()
+csrf.init_app(app)
 
 
 @app.route("/send_message", methods=["POST"])
