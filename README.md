@@ -20,4 +20,6 @@ $sudo docker build -t slack_bot . -f Docker/Dockerfile --build-arg SLACK_TOKEN="
 <br>
 <h3>Test the bot</h3>
 
+The application consists of a REST service that receives the channel and message at the "/send_message" endpoint, then relays the message to Slack. Usage: python3 src/service/application.py.
+
 $curl -d '{"channel":"channel_name", "message":"message content"}' -H "Content-Type: application/json" -X POST http://localhost:8080/send_message
